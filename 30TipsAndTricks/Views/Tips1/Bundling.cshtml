@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Bundling";
+}
+
+<h2>Bundling</h2>
+
+
+<pre>
+
+Debug build is used to turn minification off unless BundleTable.EnableOptimizations = true; is set in global.asax.cs app_start
+
+By default optimization will use the min.js version when debug=false, and use the regular jquery-1.6.2.js 
+when debug=true, since typically that makes debugging easier (no bundling and no minification of the bundle).
+    </pre>
+<div>
+    <div style="float: left">
+        Plain
+        <pre id="plain" class='brush: css'>
+
+        </pre>
+    </div>
+
+    <div style="float: left;">
+        Minimized   
+        <pre id="minified" style="height: 500px; width: 200px; word-wrap: break-word;" class='brush: css'>
+        </pre>
+    </div>
+
+</div>
+
+
+<a href="http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification">For more details</a>
+<a href="http://www.browserscope.org/?category=network">Six connections per hostname.</a>
+
+
+@section scripts{
+    <script src="/Scripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="/Scripts/SyntaxHighlighter/shBrushCss.js"></script>
+    <link href="/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <link href="/Content/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.get('@Styles.Url("~/Content/bundlingtest")', function (data) {
+                $('#minified').text(data + '\n\n\na'); //force longer block
+                $.get('@Styles.Url("~/Content/MinificationAndBundling/1.css")', function (data) {
+                    $('#plain').text(data);
+                    $.get('@Styles.Url("~/Content/MinificationAndBundling/2.css")', function (data) {
+                        $('#plain').append(data);
+                        SyntaxHighlighter.highlight();
+                    });
+                });
+            });
+        });
+    </script>
+}
+

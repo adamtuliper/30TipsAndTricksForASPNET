@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "FusionLog";
+}
+
+<h2>Fusion Log</h2>
+<pre>
+If you got here, all is well.
+Go to your web.config and redirect v4 to v3 for System.Web.MVC and you should receive an error.
+Run:
+</pre>
+<div class="nuget-badge">
+    <p>
+        <code>c:\&gt; cscript FusLogVwSet.wsf /enable /all
+        </code>
+    </p>
+</div>
+
+<pre>to then log everything and find the load for System.Web.Mvc, you'll find it loads v3, hence the conflict.
+Since the assembly loads OK it's not an assembly load error and you have to look a little deeper.
+This script is available at <a href="http://www.paraesthesia.com/archive/2004/10/20/fusion-log-viewer-settings-changer.aspx">Fusion Log Viewer</a>
+
+To stop the logging (ensure you are out of the folder c:\fusionlogs or it can't delete it)
+</pre>
+
+<div class="nuget-badge">
+    <p>
+        <code>c:\&gt; cscript FusLogVwSet.wsf /disable
+        </code>
+    </p>
+</div>
+<pre>
+So in summary, to test this out add the following into your web.config
+&lt;dependentAssembly&gt;
+    &lt;assemblyIdentity name=&quot;System.Web.Mvc&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
+&lt;bindingRedirect oldVersion=&quot;1.0.0.0-4.0.0.0&quot; newVersion=&quot;<strong>3</strong>.0.0.0&quot; /&gt;
+&lt;/dependentAssembly&gt;
+</pre>

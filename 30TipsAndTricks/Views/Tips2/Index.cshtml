@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "30 Tips and Tricks";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                See the online version at GitHub <a href="https://github.com/adamtuliper/" title="30 Tips and Tricks">here</a>.
+            </p>
+        </div>
+    </section>
+}
+<ol class="round">
+    <li class="one">
+        <h5>Dependency Injection in MVC</h5>
+        @Html.ActionLink("Demo", "Index","States")
+    </li>
+
+    <li class="two">
+        <h5>Dependency Injection in Web Forms</h5>
+        <a href="http://localhost/ThirtyTips/CacheDemo.aspx">Demo</a>
+    </li>
+    <li class="three">
+        <h5>FxCop Security Rules</h5>
+        <a href="http://fxcopaspnetsecurity.codeplex.com/">FXCop Security Rules</a>
+    </li>
+
+    <li class="four">
+        <h5>Intellitrace</h5>
+        @Html.ActionLink("Demo","Intellitrace")
+        
+    </li>
+    <li class="five">
+        <h5>Html 5 Templates</h5>
+        <a href="http://html5boilerplate.com/">Sites Home Page</a>
+    </li>
+
+    <li class="six">
+        <h5>Elmah</h5>
+        @Html.ActionLink("Demo", "Elmah")
+    </li>
+    <li class="seven">
+        <h5>ElmahR</h5>
+        @Html.ActionLink("Demo", "ElmahR")
+    </li>
+    
+        <li class="eight">
+        <h5>Why are sessions so bad?</h5>
+         @Html.ActionLink("Demo", "WhySessionsAreBad")
+    </li>
+
+    <li class="nine">
+        <h5>Mini Profiler</h5>
+        EF Project
+    </li>
+
+    <li class="ten">
+        <h5>ASP.NET Application Initialization</h5>
+        @Html.ActionLink("Details","ApplicationInitialization")
+    </li>
+
+</ol>

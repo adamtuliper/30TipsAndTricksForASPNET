@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "30TipsAndTricks", "30TipsAndTricks\30TipsAndTricks.csproj", "{3FB21BFB-98AA-4FF3-A3D3-2F799A6B2269}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Version1", "Version1\Version1.csproj", "{D88865F4-0B49-406D-A993-4A2C3FCD5E29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "30TipsAndTricks.WebForms", "30TipsAndTricks.WebForms\30TipsAndTricks.WebForms.csproj", "{B6929E43-1838-4D46-B774-CDD6FA8F1D70}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FB21BFB-98AA-4FF3-A3D3-2F799A6B2269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FB21BFB-98AA-4FF3-A3D3-2F799A6B2269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FB21BFB-98AA-4FF3-A3D3-2F799A6B2269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FB21BFB-98AA-4FF3-A3D3-2F799A6B2269}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D88865F4-0B49-406D-A993-4A2C3FCD5E29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D88865F4-0B49-406D-A993-4A2C3FCD5E29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D88865F4-0B49-406D-A993-4A2C3FCD5E29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D88865F4-0B49-406D-A993-4A2C3FCD5E29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6929E43-1838-4D46-B774-CDD6FA8F1D70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6929E43-1838-4D46-B774-CDD6FA8F1D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6929E43-1838-4D46-B774-CDD6FA8F1D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6929E43-1838-4D46-B774-CDD6FA8F1D70}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

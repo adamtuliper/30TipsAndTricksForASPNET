@@ -1,0 +1,25 @@
+<configuration>
+  <configSections>
+    <sectionGroup name="elmah">
+      <section name="errorLog" requirePermission="false" type="Elmah.ErrorLogSectionHandler, Elmah" />
+      <section name="errorPost" requirePermission="false" type="Elmah.ErrorLogSectionHandler, Elmah" />
+    </sectionGroup>
+  </configSections>
+  <elmah>
+    <errorLog type="Elmah.MemoryErrorLog, Elmah" />
+    <errorPost targetUrl="http://TARGET_DASHBOARD_URL" sourceId="http://SOURCE_IDENTIFIER_URI_AS_LISTED_IN_DASHBOARD_CONFIG" />
+  </elmah>
+  <system.webServer>
+    <validation validateIntegratedModeConfiguration="false" />
+    <modules runAllManagedModulesForAllRequests="true">
+      <add name="ErrorLog"  type="Elmah.ErrorLogModule, Elmah" />
+      <add name="ErrorPost" type="ElmahR.Elmah.ErrorPostModule, ElmahR.Elmah"/>
+    </modules>
+  </system.webServer>
+  <system.web>
+    <httpModules>
+        <add name="ErrorLog"  type="Elmah.ErrorLogModule, Elmah"/>
+        <add name="ErrorPost" type="ElmahR.Elmah.ErrorPostModule, ElmahR.Elmah"/>
+    </httpModules>
+  </system.web>
+</configuration>

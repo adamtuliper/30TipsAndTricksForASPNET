@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "ElmahR";
+}
+
+<h2>ElmahR</h2>
+
+<pre><a href="http://elmahr.apphb.com/">ElmahR Home Page</a>
+
+<a href="https://bitbucket.org/wasp/elmahr/downloads">Download Elmah Sample App</a>
+Unzip the code and put it into c:\source\ElmahR
+Launch each site in IIS Express: (C:\Program Files\IIS Express) using the commands below
+</pre>
+
+<div class="nuget-badge">
+    <p>
+        <code>c:\&gt; iisexpress /path:C:\source\ElmahR\Elmahr /port:37345</code>
+        <code>c:\&gt; iisexpress /path:C:\source\ElmahR\Elmahr.SampleSource /port:37347</code>
+        <code>c:\&gt; iisexpress /path:C:\source\ElmahR\Elmahr.SampleSource.MVC /port:37348
+        </code>
+    </p>
+</div>
+<pre>
+Once each is running, note that the purpose of the last two applications are only to generate errors. Refresh them a few times to generate various exceptions
+You should see the errors show up in the dashboard.
+
+<a href="http://localhost:37345/">ElmahR Dashbord</a>
+<a href="http://localhost:37347/">ElmahR Web Forms Error App</a>
+<a href="http://localhost:37348/">ElmahR MVC Error App</a>

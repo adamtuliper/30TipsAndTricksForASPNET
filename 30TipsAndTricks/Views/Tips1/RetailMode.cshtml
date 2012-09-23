@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "RetailMode";
+}
+
+<h2>Retail Mode</h2>
+
+<pre>
+
+View this page with retail mode off, and then on.
+Retail Mode forces tracing off, release mode on, and custom errors on.
+</pre>
+<div class="nuget-badge">
+    <p>
+        <code>PS:\&gt; C:\windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config</code>
+    </p>
+</div>
+Or for those still running Ataris and 32bit systems.. 
+<div class="nuget-badge">
+    <p>
+        <code>C:\windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config</code>
+    </p>
+</div>
+<br/>
+In your machine.config find system.web and add:
+<pre id="plain" class='brush: xml'>
+    &lt;system.web&gt;
+        &lt;deployment retail="true" /&gt;
+    &lt;/&lt;system.web&gt;
+</pre>
+
+<br/>
+@Html.ActionLink("Cause Exception", "CauseException")
+
+<a href="http://localhost/ThirtyTips/CauseException.aspx">Cause Exception</a>
+
+
+
+@section scripts{
+    <script src="/Scripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="~/Scripts/SyntaxHighlighter/shBrushCSharp.js"></script>
+    <script src="~/Scripts/SyntaxHighlighter/shBrushXml.js"></script>
+    <link href="/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <link href="/Content/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SyntaxHighlighter.all();
+        });
+    </script>
+}

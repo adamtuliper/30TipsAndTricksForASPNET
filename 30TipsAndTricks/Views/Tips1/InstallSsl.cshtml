@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "InstallSsl";
+}
+
+<h2>Install Ssl</h2>
+
+
+<pre>
+Run the powershell script to enable ssl
+
+For windows 7 to enable IIS powershell and install SSL
+
+Open a Visual Studio Command Prompt and let's create a certificate
+</pre>
+<div class="nuget-badge">
+    <p>
+        <code>c:\&gt; makecert -r -pe -n "CN=YOURMACHINENAME" -eku 1.3.6.1.5.5.7.3.1 -ss my -sr localMachine -sky exchange -sp "Microsoft RSA SChannel Cryptographic Provider" -sy 12
+        </code>
+    </p>
+</div>
+<pre>
+Load powershell command prompt (type powershell)
+
+Run this command:
+</pre>
+<div class="nuget-badge">
+    <p>
+        <code>PS:\&gt; get-executionpolicy
+        </code>
+    </p>
+</div>
+
+<pre>If the above returns "Restricted", run this and exit powershell</pre>
+<div class="nuget-badge">
+    <p>
+        <code>PS:\&gt; set-executionpolicy remotesigned</code>
+    </p>
+</div>
+<pre>
+(Restart powershell as admin only if you had to do the prior step)
+
+</pre>
+<div class="nuget-badge">
+    <p>
+        <code>PS:\&gt; import-module WebAdministration</code>
+    </p>
+</div>
+<pre>If you receive:
+<pre class="error-text">
+Import-Module : The specified module 'WebAdministration' was not loaded because no valid module file was found in any module directory.
+Install the powershell snap-in for IIS7</pre>
+</pre>
+<div class="nuget-badge">
+    <p>
+        <code>PS:\&gt; New-WebBinding -Name "Default Web Site" -IP "*" -Port 443 -Protocol https
+        </code>
+    </p>
+</div> 
+<div class="nuget-badge">
+    <p>
+        <code>PS:\&gt; Get-WebBinding 'Default Web Site'
+        </code>
+    </p>
+</div>
+
+Now let's view all the certificates in that store
+<div class="nuget-badge">
+    <p>
+        <code>c:\&gt;dir cert:\localmachine\my
+        </code>
+    </p>
+</div> 
+    
+<div class="nuget-badge">
+    <p>
+        <code>PS:\&gt;IIS:\SslBindings
+        </code>
+    </p>
+</div> 
+
+Use the returned thumbrint of your certificate in the following command
+<div class="nuget-badge">
+    <p>
+        <code>PS IIS:\SslBindings&gt; get-item cert:\LocalMachine\MY\8BF3436945A996EA2DC6617605785E631FD00BF7 | new-item 0.0.0.0!443
+        </code>
+    </p>
+</div> 
+
+<pre>
+(Or go into 'bindings' in IIS, click 'edit' on your 443 binding, and import the certificate there)
+To revert:
+    Delete the cert (manually in mmc/certsvcs) and the binding via</pre>
+   <div class="nuget-badge">
+    <p>
+        <code>PS:\&gt; Remove-WebBinding -Name "Default Web Site" -IP "*" -Port 443 -Protocol https
+        </code>
+    </p>
+</div> 

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>Attribute Routing</h2>
+
+
+<div class="nuget-badge">
+    <p>
+        <code>PM&gt; Install-Package AttributeRouting
+        </code>
+    </p>
+</div>
+
+
+<pre id="plain" class='brush: csharp'>
+[GET("Tips3/ViewSortedCustomers/{companyId}/{sortOrder?}/{page?}")]
+public ActionResult ViewSortedCustomers(int customerid, int companyid, string sortOrder, int page)
+{
+   .....
+}
+</pre>

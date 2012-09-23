@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Elmah";
+}
+
+<h2>Elmah</h2>
+
+
+<div class="nuget-badge">
+    <p>
+        <code>PS&gt; Install-Package Elmah.MVC</code>
+    </p>
+</div>
+
+Then...
+<pre id="plain" class='brush: csharp'>
+public static void RegisterGlobalFilters(GlobalFilterCollection filters)
+{
+    //filters.Add(new HandleErrorAttribute());
+}
+</pre>
+@Html.ActionLink("Cause Exception", "CauseException", "Tips1")
+
+<a href="../Elmah">Elmah</a>
+
+
+
+@section scripts{
+    <script src="/Scripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="/Scripts/SyntaxHighlighter/shBrushCSharp.js"></script>
+    <link href="/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <link href="/Content/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SyntaxHighlighter.all();
+        });
+    </script>
+}

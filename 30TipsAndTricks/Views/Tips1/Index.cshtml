@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "30 Tips and Tricks";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <p>
+                See the online version at GitHub <a href="https://github.com/adamtuliper/" title="30 Tips and Tricks">here</a>.
+            </p>
+        </div>
+    </section>
+}
+<h3>Tips and tricks (note the links to each tips page on top right)</h3>
+<ol class="round">
+    <li class="one">
+        <h5>Fusion Logging</h5>
+        Redirect System.Web.Mvc to v3 from v4, watch the fun!
+        @Html.ActionLink("Demo", "FusionLog")</a>
+    </li>
+
+    <li class="two">
+        <h5>Install SSL</h5>
+        @Html.ActionLink("Demo", "InstallSsl")</a>
+    </li>
+
+
+    <li class="three">
+        <h5>Force SSL (Note Strict-Transport-Security)</h5>
+        @Html.ActionLink("Demo", "ForceSsl")</a>
+    </li>
+
+    <li class="four">
+        <h5>Site SLLLLOOOOOoooowwww?</h5>
+        <a href="http://yslow.org/">Help fix me</a>
+    </li>
+    <li class="five">
+        <h5>Minification</h5>
+        @Html.ActionLink("Demo", "Minification")
+    </li>
+
+    <li class="six">
+        <h5>Bundling</h5>
+        @Html.ActionLink("Demo", "Bundling")
+    </li>
+    <li class="seven">
+        <h5>Retail Mode</h5>
+        @Html.ActionLink("Demo", "RetailMode")
+    </li>
+    <li class="eight">
+        <h5>Glimpse</h5>
+        <a href="http://localhost:1706/Glimpse.axd">View Settings</a>
+    </li>
+    <li class="nine">
+        <h5>Strongly typed cache provider</h5>
+        <a href="http://localhost/ThirtyTips/CacheDemo.aspx">Demo</a>
+    </li>
+
+    <li class="ten">
+        <h5>Shared Versioning</h5>
+        Reference MVC project
+    </li>
+
+
+</ol>

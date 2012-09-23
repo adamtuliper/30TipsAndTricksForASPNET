@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Intellitrace";
+}
+
+<h2>Intellitrace</h2>
+
+
+
+<ol>
+    <li>Install the collector.</li>
+    <li>Set up permissions for running the collector.</li>
+    <li>For Web apps, install the IntelliTrace PowerShell commands.</li>
+    <li>Set up where to save the .iTrace file.</li>
+    <li>Collect data from a Web app.</li>
+    <li>Open the .iTrace file in Visual Studio Ultimate.</li>
+</ol>
+
+
+@*collection_plan.ASP.NET.default.xml
+Collects IntelliTrace events only. Good for collecting information about exceptions, database calls, and Web server requests.
+collection_plan.ASP.NET.trace.xml*@
+
+<pre id="plain" class='brush: powershell'>
+
+Import-Module "C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\CommonExtensions\Microsoft\IntelliTrace\11.0.0\Microsoft.VisualStudio.IntelliTrace.PowerShell.dll"
+
+Start-IntelliTraceCollection DefaultAppPool  "C:\Program Files (x86)\Microsoft Visual Studio 11.0\Common7\IDE\CommonExtensions\Microsoft\IntelliTrace\11.0.0\collection_plan.ASP.NET.trace.xml"  "c:\intellitracelogs"
+
+Stop-IntelliTraceCollection DefaultAppPool 
+</pre>
+
+
+<a href="http://localhost/ThirtyTips/CauseException.aspx">Cause Exception</a>
+
+For more information see <a href="http://msdn.microsoft.com/en-us/library/hh398365.aspx">Intellitrace</a>
+
+@section scripts{
+    <script src="/Scripts/SyntaxHighlighter/shCore.js"></script>
+    <link href="/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <script src="~/Scripts/SyntaxHighlighter/shBrushPowerShell.js"></script>
+    <link href="/Content/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SyntaxHighlighter.all();
+        });
+    </script>
+}

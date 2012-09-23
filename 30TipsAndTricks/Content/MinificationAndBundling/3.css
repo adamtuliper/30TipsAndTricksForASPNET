@@ -1,0 +1,12 @@
+﻿/*
+    This is a bunch of text that should be removed upon minification
+*/
+.FromThree {
+ background-color: #fff;
+    border-top: solid 10px #000;
+    color: #333;
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    margin: 0;
+    padding: 0;
+}

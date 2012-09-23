@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Force Ssl";
+}
+
+<h2>Force Ssl</h2>
+
+
+<pre>
+1. Via IIS
+   Force SSL via RequireSSL on the server in IIS
+   Open IIS, click on your website, in feature view search for SSL.
+   Requires installed cert.
+
+
+2. Via Application
+
+ <strong>MVC</strong><pre id="plain" class='brush: csharp'> 
+[RequireHttps]
+[Authorize]
+public ViewResult Edit(int customerId)
+{
+    .....
+    .....
+    return View(customerViewModel);
+}
+</pre>
+ <strong>MVC</strong>
+  <a href="http://code.google.com/p/securityswitch/wiki/GettingStarted">Security Switcher</a>
+   
+    or simply use a combination of Strict Transport Security Header and redirects
+  
+ From <a href="http://stackoverflow.com/questions/47089/best-way-in-asp-net-to-force-https-for-an-entire-site">best-way-in-asp-net-to-force-https-for-an-entire-site</a>
+<pre id="plain" class='brush: csharp'>
+protected void Application_BeginRequest(Object sender, EventArgs e)
+{
+  switch (Request.Url.Scheme)
+  {
+    case "https":
+      Response.AddHeader("Strict-Transport-Security", "max-age=300");
+      break;
+    case "http":
+      var path = "https://" + Request.Url.Host + Request.Url.PathAndQuery;
+      Response.Status = "301 Moved Permanently";
+      Response.AddHeader("Location", path);
+      break;
+  }
+}
+</pre>
+
+3. Note the two above for MVC and Web Forms are less secure as an attacker can still post.
+   In method 1, the TCP connection to the server fails and this occurs before a post occurs.
+   This can be in conjunction with the Strict-Transport-Security to force the <i>browser</i> to change requests to SSL
+   For more information
+        <a href="http://blogs.msdn.com/b/sfaust/archive/2010/05/12/strict-transport-security-asp-net-module.aspx">strict-transport-security-asp-net-module</a>
+        <a href="http://www.troyhunt.com/2011/11/owasp-top-10-for-net-developers-part-9.html">owasp-top-10-for-net-developers-part-9</a>
+</pre>
+@Html.ActionLink("Attempt to access secured controller (if not currently on ssl, a redirect will be attempted)","InstallSslSecured")
+<a href="https://localhost/ThirtyTips/CauseException.aspx">Localhost SSL</a>
+
+
+@section scripts{
+    <script src="/Scripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="/Scripts/SyntaxHighlighter/shBrushCSharp.js"></script>
+    <link href="/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <link href="/Content/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SyntaxHighlighter.all();
+        });
+    </script>
+}

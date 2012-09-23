@@ -1,0 +1,65 @@
+﻿@using System.Web.UI.WebControls
+@{
+    ViewBag.Title = "Minication";
+}
+
+<h2>Minication</h2>
+<pre>I've bundled only a single file for demo purposes to see the minification.
+
+Debug build is used to turn minification off unless BundleTable.EnableOptimizations = true; is set in global.asax.cs application_start
+
+By default optimization will use the min.js version when debug=false, and use the regular jquery-1.6.2.js 
+when debug=true, since typically that makes debugging easier (no bundling and no minification of the bundle).
+   
+  If you only want to bundle, and not minimize, then use a Bundle object, otherwise use a StyleBundle to get both bundling and minification.
+
+     </pre>
+<div>
+    <div style="float: left">
+        Plain - Length: <div id="plainLength" style="display:inline-block;"></div>
+        <pre id="plain" class='brush: css'>
+        </pre>
+    </div>
+
+    <div style="float: left;">
+        Minimized  - Length: <div id="minimizedLength" style="display:inline-block;"></div> 
+        <pre id="minified" style="height: 500px; width: 200px; word-wrap: break-word;" class='brush: css'>
+        </pre>
+    </div>
+
+</div>
+
+@section scripts{
+    <script src="/Scripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="/Scripts/SyntaxHighlighter/shBrushCss.js"></script>
+    <link href="/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <link href="/Content/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" />
+    
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.get('@Styles.Url("~/Content/mintest")', function (dataMinified) {
+                $('#minified').text(dataMinified + '\n\n\na'); //force longer block
+                var minifiedLength = dataMinified.length;
+                
+                $.get('@Styles.Url("~/Content/MinificationAndBundling/1.css")', function (data) {
+                    //alert(data.length);
+                    $('#plain').append(data);
+                    $.get('@Styles.Url("~/Content/MinificationAndBundling/2.css")', function (data2) {
+                        $('#plain').append(data2);
+                        $.get('@Styles.Url("~/Content/MinificationAndBundling/3.css")', function (data3) {
+                            $('#plain').append(data3);
+                            var plainLength = data.length + data2.length + data3.length;
+                            SyntaxHighlighter.highlight();
+                            $("#minimizedLength").text(minifiedLength);
+                            $("#plainLength").text(plainLength);
+                        });
+                    });
+
+                });
+
+            });
+
+        });
+    </script>
+}

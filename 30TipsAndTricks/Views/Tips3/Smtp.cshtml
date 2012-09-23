@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Smtp";
+}
+
+<h2>Smtp</h2>
+<pre>
+Check your C:\emails folder for generated emails as .eml files. If they don't exist, create this folder and refresh this page. 
+Ensure the account you are running your web app under has permissions to this file.
+This relies on the following set in your web.config
+<pre class="brush: xml">
+   &lt;system.net&gt;
+    &lt;mailSettings&gt;
+      &lt;smtp deliveryMethod=&quot;SpecifiedPickupDirectory&quot;&gt;
+        &lt;specifiedPickupDirectory pickupDirectoryLocation=&quot;c:\emails\&quot;/&gt;
+      &lt;/smtp&gt;
+    &lt;/mailSettings&gt;
+  &lt;/system.net&gt;
+</pre>
+</pre>
+
+
+@section scripts{
+    <script src="/Scripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="~/Scripts/SyntaxHighlighter/shBrushXml.js"></script>
+    <link href="/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <link href="/Content/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SyntaxHighlighter.all();
+        });
+    </script>
+}

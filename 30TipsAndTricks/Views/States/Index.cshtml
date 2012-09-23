@@ -1,0 +1,14 @@
+﻿@model System.Collections.Generic.List<_30TipsAndTricks.Models.State>
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>States</h2>
+
+<table>
+@foreach(var state in Model)
+{
+    <tr><td>@state.Name</td><td>@state.Abbreviation</td></tr>
+}
+    </table>

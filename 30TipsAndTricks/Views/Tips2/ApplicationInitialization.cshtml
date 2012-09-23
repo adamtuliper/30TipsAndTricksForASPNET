@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "ApplicationInitialization";
+}
+
+<h2>Application 
+    Initialization</h2>
+
+<pre id="plain" class='brush: xml'>
+    
+
+&lt;add name=".NET v4.5" startMode="AlwaysRunning" managedRuntimeVersion="v4.0" /&gt;
+&lt;application path="/appinit" preloadEnabled="true" applicationPool=".NET v4.5">&gt;</pre>
+    
+More details available <a href="http://www.iis.net/learn/get-started/whats-new-in-iis-8/iis-80-application-initialization#TOC301259895">here</a>
+    
+@section scripts{
+    <script src="/Scripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="~/Scripts/SyntaxHighlighter/shBrushCSharp.js"></script>
+    <script src="~/Scripts/SyntaxHighlighter/shBrushXml.js"></script>
+    <link href="/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <link href="/Content/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SyntaxHighlighter.all();
+        });
+    </script>
+}
