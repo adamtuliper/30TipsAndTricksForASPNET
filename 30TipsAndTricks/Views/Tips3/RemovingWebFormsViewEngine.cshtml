@@ -1,0 +1,17 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>title</h2>
+<pre>
+TODO format code
+var webFormsViewEngine = ViewEngines.Engines.OfType<WebFormViewEngine>().FirstOrDefault();
+if (webFormsViewEngine != null)
+{
+    ViewEngines.Engines.Remove(webFormsViewEngine);
+}
+                
+</pre>

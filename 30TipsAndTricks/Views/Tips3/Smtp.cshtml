@@ -16,6 +16,20 @@ This relies on the following set in your web.config
     &lt;/mailSettings&gt;
   &lt;/system.net&gt;
 </pre>
+The parsing of eml files can be used via the folowing code (taken from http://blog.onderweg.eu/2010/12/parsing-eml-files-in-c/ )
+<pre class="brush: csharp">
+protected CDO.Message ReadMessage(String emlFileName)
+{
+    CDO.Message msg = new CDO.MessageClass();
+    ADODB.Stream stream = new ADODB.StreamClass();
+    stream.Open(Type.Missing, ADODB.ConnectModeEnum.adModeUnknown, ADODB.StreamOpenOptionsEnum.adOpenStreamUnspecified, String.Empty, String.Empty);
+    stream.LoadFromFile(emlFileName); //ie your new test file that has been dropped in the folder
+    stream.Flush();
+    msg.DataSource.OpenObject(stream, "_Stream");
+    msg.DataSource.Save();
+    return msg;
+}
+</pre>
 </pre>
 
 

@@ -50,7 +50,7 @@ namespace _30TipsAndTricks
             //Autofac specific code
             var builder = new ContainerBuilder();
             builder.RegisterType<MemoryCacheProvider>().As<ICacheProvider>().InstancePerLifetimeScope();
-            builder.RegisterType<StateRepository>().As<StateRepository>().InstancePerLifetimeScope();
+            builder.RegisterType<StateRepository>().As<IStateRepository>().InstancePerLifetimeScope();
 
             builder.RegisterControllers(Assembly.GetExecutingAssembly());
 

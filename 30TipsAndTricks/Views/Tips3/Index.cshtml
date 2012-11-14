@@ -15,7 +15,7 @@
         </div>
     </section>
 }
-<h3>We suggest the following:</h3>
+<h3>Page THREE - can you handle the pain??!</h3>
 <ol class="round">
     <li class="one">
         <h5>CAT.NET</h5>
@@ -29,7 +29,8 @@
 
     <li class="three">
         <h5>Attribute Routing</h5>
-        @Html.ActionLink("More complex route", "ViewSortedCustomers", new { companyId = 5, sortOrder = "asc" })
+        Note the attribute on the AttributeRoutingSample method in the Tips3Controller.cs file<br/>
+        @Html.ActionLink("More complex route", "AttributeRoutingSample", new { companyId = 5, sortOrder = "asc" })
     </li>
 
     <li class="four">
@@ -55,6 +56,17 @@
       <li class="eight">
         <h5>SMTP Testing</h5>
         <a href="http://localhost:1706/tips3/smtp">SMTP</a>
+    </li>
+    
+     </li>
+    <li class="nine">
+        <h5>MVC Remove Web Forms View Engine</h5>
+        @Html.ActionLink("Demo", "RemovingWebFormsViewEngine")
+    </li>
+
+    <li class="ten">
+        <h5>Script Loading Failover</h5>
+        @Html.ActionLink("Demo", "CdnFailoverToLocal")
     </li>
 
     @*        <li class="one">

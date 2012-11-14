@@ -63,10 +63,26 @@ namespace _30TipsAndTricks.Controllers
             return View();
         }
 
-        [GET("Tips3/ViewSortedCustomers/{companyId}/{sortOrder?}/{page?}")]
-        public ActionResult ViewSortedCustomers(int companyid, string sortOrder, int? page)
+        public ViewResult PostSharpLogging()
         {
             return View();
         }
+
+        [GET("Tips3/AttributeRoutingSample/{companyId}/{sortOrder?}/{page?}")]
+        public ActionResult AttributeRoutingSample(int companyid, string sortOrder, int? page)
+        {
+            return View();
+        }
+
+        public ActionResult RemovingWebFormsViewEngine()
+        {
+            return View();
+        }
+        
+        public ActionResult CdnFailoverToLocal()
+        {
+            return View();
+        }
+
     }
 }

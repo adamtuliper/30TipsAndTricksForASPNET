@@ -1,0 +1,81 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>title</h2>
+
+
+<div class="nuget-badge">
+    <p>
+        <code>Install-Package  Log4Net</code>
+    </p>
+</div>
+
+<div class="nuget-badge">
+    <p>
+        <code>Install-Package  Install-Package PostSharp.Toolkit.Diagnostics.Log4Net</code>
+    </p>
+</div>
+
+
+<pre>
+[assembly: log4net.Config.XmlConfigurator()]
+</pre>
+
+add at top
+
+&lt;configSections&gt;
+    &lt;section name=&quot;log4net&quot; type=&quot;log4net.Config.Log4NetConfigurationSectionHandler, log4net&quot;/&gt;
+&lt;/configSections&gt;
+
+
+&lt;log4net&gt;
+    &lt;root&gt;
+        &lt;level value=&quot;DEBUG&quot;/&gt;
+        &lt;appender-ref ref=&quot;FileAppender&quot;/&gt;
+        &lt;appender-ref ref=&quot;ErrorFile&quot;/&gt;
+        &lt;!--&lt;appender-ref ref=&quot;SmtpAppender&quot;/&gt;--&gt;
+    &lt;/root&gt;
+    &lt;appender name=&quot;ErrorFile&quot; type=&quot;log4net.Appender.FileAppender&quot;&gt;
+        &lt;filter type=&quot;log4net.Filter.LevelRangeFilter&quot;&gt;
+            &lt;levelMin value=&quot;WARN&quot;/&gt;
+            &lt;levelMax value=&quot;FATAL&quot;/&gt;
+        &lt;/filter&gt;
+        &lt;file value=&quot;logs/Application.Errors.log&quot;/&gt;
+        &lt;appendToFile value=&quot;true&quot;/&gt;
+        &lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&gt;
+            &lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%property{NDC}] - %message%newline&quot;/&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+    &lt;appender name=&quot;FileAppender&quot; type=&quot;log4net.Appender.FileAppender&quot;&gt;
+        &lt;filter type=&quot;log4net.Filter.LevelMatchFilter&quot;&gt;
+            &lt;levelToMatch value=&quot;ALL&quot; /&gt;
+        &lt;/filter&gt;
+        &lt;file value=&quot;logs/Application.log&quot;/&gt;
+        &lt;appendToFile value=&quot;true&quot;/&gt;
+        &lt;layout type=&quot;log4net.Layout.PatternLayout&quot;&gt;
+            &lt;conversionPattern value=&quot;%date [%thread] %-5level %logger [%property{NDC}] - %message%newline&quot;/&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+    &lt;appender name=&quot;SmtpAppender&quot; type=&quot;log4net.Appender.SmtpAppender,log4net&quot;&gt;
+        &lt;filter type=&quot;log4net.Filter.LevelRangeFilter&quot;&gt;
+            &lt;levelMin value=&quot;WARN&quot;/&gt;
+            &lt;levelMax value=&quot;FATAL&quot;/&gt;
+        &lt;/filter&gt;
+        &lt;to value=&quot;you@email&quot;/&gt;
+        &lt;from value=&quot;sender@email&quot;/&gt;
+        &lt;subject value=&quot;Application Errors&quot;/&gt;
+        &lt;smtpHost value=&quot;your smtp server&quot;/&gt;
+        &lt;bufferSize value=&quot;512&quot;/&gt;
+        &lt;lossy value=&quot;false&quot;/&gt;
+        &lt;evaluator type=&quot;log4net.Core.LevelEvaluator,log4net&quot;&gt;
+            &lt;threshold value=&quot;WARN&quot;/&gt;
+        &lt;/evaluator&gt;
+        &lt;layout type=&quot;log4net.Layout.PatternLayout,log4net&quot;&gt;
+            &lt;conversionPattern value=&quot;%property{log4net:HostName} :: %level :: %message %newlineLogger: %logger%newlineThread: %thread%newlineDate: %date%newlineNDC: %property{NDC}%newline%newline&quot;/&gt;
+        &lt;/layout&gt;
+    &lt;/appender&gt;
+&lt;/log4net&gt;

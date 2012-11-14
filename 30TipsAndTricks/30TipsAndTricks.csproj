@@ -419,6 +419,10 @@
     <Content Include="Views\Tips2\ElmahR.cshtml" />
     <Content Include="Views\Tips2\ApplicationInitialization.cshtml" />
     <Content Include="Views\Tips3\Smtp.cshtml" />
+    <Content Include="Views\Tips3\PostSharpLogging.cshtml" />
+    <Content Include="Views\Tips3\AttributeRoutingSample.cshtml" />
+    <Content Include="Views\Tips3\RemovingWebFormsViewEngine.cshtml" />
+    <Content Include="Views\Tips3\CdnFailoverToLocal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
