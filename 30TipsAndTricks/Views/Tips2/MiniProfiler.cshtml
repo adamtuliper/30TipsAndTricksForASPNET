@@ -1,0 +1,38 @@
+﻿@model dynamic
+
+
+This page loaded some EF code. Look in the upper left hand corner for profiling information.
+
+This uses the package notes below and outside of the regular MiniProfiler setup requires this code:
+
+<pre id="plain" class='brush: csharp'>
+void Application_Start(object sender, EventArgs e)
+{
+    // Code that runs on application startup
+    MiniProfilerEF.Initialize();
+}
+</pre>
+
+
+
+<div class="nuget-badge">
+    <p>
+        <code>PS&gt; Install-Package MiniProfiler.Ef</code>
+    </p>
+</div>
+
+
+
+
+@section scripts{
+    <script src="/Scripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="/Scripts/SyntaxHighlighter/shBrushCSharp.js"></script>
+    <link href="/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <link href="/Content/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SyntaxHighlighter.all();
+        });
+    </script>
+}
+
