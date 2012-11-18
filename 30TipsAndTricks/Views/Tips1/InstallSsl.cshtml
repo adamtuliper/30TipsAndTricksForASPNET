@@ -50,6 +50,8 @@ Run this command:
 Import-Module : The specified module 'WebAdministration' was not loaded because no valid module file was found in any module directory.
 Install the powershell snap-in for IIS7</pre>
 </pre>
+
+Tell IIS we want to enable SSL (we're not yet assigning the cert though, that's below)
 <div class="nuget-badge">
     <p>
         <code>PS:\&gt; New-WebBinding -Name "Default Web Site" -IP "*" -Port 443 -Protocol https
@@ -70,15 +72,17 @@ Now let's view all the certificates in that store
         </code>
     </p>
 </div> 
-    
+
+Copy the returned thumbrint of your certificate in the following command. This actually pipes
+
+Let's CD into the powershell extensions for IIS as we're going to add a new binding.
 <div class="nuget-badge">
     <p>
-        <code>PS:\&gt;IIS:\SslBindings
+        <code>PS:\&gt;CD IIS:\SslBindings
         </code>
     </p>
 </div> 
 
-Use the returned thumbrint of your certificate in the following command
 <div class="nuget-badge">
     <p>
         <code>PS IIS:\SslBindings&gt; get-item cert:\LocalMachine\MY\8BF3436945A996EA2DC6617605785E631FD00BF7 | new-item 0.0.0.0!443

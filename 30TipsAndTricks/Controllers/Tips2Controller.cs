@@ -35,5 +35,24 @@ namespace _30TipsAndTricks.Controllers
         {
             return View();
         }
+
+        public ActionResult WhySessionsAreBad()
+        {
+            return View();
+        }
+
+        public ActionResult UsingAntiXss()
+        {
+            return View();
+        }
+
+        public ActionResult MiniProfiler()
+        {
+            using(var context = new EFContext())
+            {
+                var customer = context.Customers.First();
+            }
+            return View();
+        }
     }
 }

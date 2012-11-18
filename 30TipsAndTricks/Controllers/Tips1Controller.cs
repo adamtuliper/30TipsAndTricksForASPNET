@@ -34,7 +34,7 @@ namespace _30TipsAndTricks.Controllers
         {
             //create some invalid assembly reference.
             //var assembly = Assembly.Load("I dont exist.dll");
-            var customer = new Customer();
+            var customer = new Version1.Customer();
             customer.Name = "Mary Doe";
             customer.Address = "555 Main St.";
             //customer.EmailAddress = "mary@nowhere.com";

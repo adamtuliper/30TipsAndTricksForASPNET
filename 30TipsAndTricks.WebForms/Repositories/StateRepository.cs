@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Caching;
+using System.Threading;
 using _30TipsAndTricks.WebForms.Interfaces;
 using _30TipsAndTricks.WebForms.Models;
 
@@ -11,7 +12,9 @@ namespace _30TipsAndTricks.WebForms.Repositories
 
         public StateRepository(ICacheProvider cacheProvider)
         {
+            
             _cacheProvider = cacheProvider;
+
         }
 
         public IEnumerable<State> GetAll()
@@ -28,7 +31,8 @@ namespace _30TipsAndTricks.WebForms.Repositories
             }
             else
             {
-
+                //Fake delay
+                Thread.Sleep(5000);
                 string[] values = { "", "" };
 
                 string[] states =

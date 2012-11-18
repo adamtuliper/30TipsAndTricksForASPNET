@@ -5,15 +5,23 @@
 <h2>Application 
     Initialization</h2>
 
+In IIS 7, you could enable this manually through the IIS configuration for the app pools.
+
 <pre id="plain" class='brush: xml'>
     
 
 &lt;add name=".NET v4.5" startMode="AlwaysRunning" managedRuntimeVersion="v4.0" /&gt;
 &lt;application path="/appinit" preloadEnabled="true" applicationPool=".NET v4.5">&gt;</pre>
+
+<pre>More details available <a href="http://www.iis.net/learn/get-started/whats-new-in-iis-8/iis-80-application-initialization#TOC301259895">here</a>
+ 
+Now in IIS 8 the GUI options are available.
+<a href="~/Images/IIS8%20Application%20Initialization.png"><img width="400" alt="app initialization" src="~/Images/IIS8%20Application%20Initialization.png" /></a>
+
+
+</pre>
     
-More details available <a href="http://www.iis.net/learn/get-started/whats-new-in-iis-8/iis-80-application-initialization#TOC301259895">here</a>
-    
-@section scripts{
+    @section scripts{
     <script src="/Scripts/SyntaxHighlighter/shCore.js"></script>
     <script src="~/Scripts/SyntaxHighlighter/shBrushCSharp.js"></script>
     <script src="~/Scripts/SyntaxHighlighter/shBrushXml.js"></script>

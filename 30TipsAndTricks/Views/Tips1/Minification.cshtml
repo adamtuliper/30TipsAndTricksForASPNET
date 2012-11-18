@@ -42,10 +42,15 @@ when debug=true, since typically that makes debugging easier (no bundling and no
                 $('#minified').text(dataMinified + '\n\n\na'); //force longer block
                 var minifiedLength = dataMinified.length;
                 
-                $.get('@Styles.Url("~/Content/MinificationAndBundling/1.css")', function (data) {
+                $.get('@Styles.Url("~/Content/MinificationAndBundling/large.css")', function (data) {
                     //alert(data.length);
                     $('#plain').append(data);
-                    $.get('@Styles.Url("~/Content/MinificationAndBundling/2.css")', function (data2) {
+                    var plainLength = data.length;
+                    SyntaxHighlighter.highlight();
+                    $("#minimizedLength").text(minifiedLength);
+                    $("#plainLength").text(plainLength);
+
+                    @*$.get('@Styles.Url("~/Content/MinificationAndBundling/2.css")', function (data2) {
                         $('#plain').append(data2);
                         $.get('@Styles.Url("~/Content/MinificationAndBundling/3.css")', function (data3) {
                             $('#plain').append(data3);
@@ -54,7 +59,7 @@ when debug=true, since typically that makes debugging easier (no bundling and no
                             $("#minimizedLength").text(minifiedLength);
                             $("#plainLength").text(plainLength);
                         });
-                    });
+                    });*@
 
                 });
 

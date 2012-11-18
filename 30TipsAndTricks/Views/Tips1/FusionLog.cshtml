@@ -4,8 +4,13 @@
 
 <h2>Fusion Log</h2>
 <pre>
-If you got here, all is well.
-Go to your web.config and redirect v4 to v3 for System.Web.MVC and you should receive an error.
+<strong>DO NOT forget to disable this on your system after enabling - you can get GIGS of logs after a while</strong>
+
+<i>This works for IIS and for IIS Express as well.</i> 
+
+You can simply enable it and in turn load a web app and see the results.
+If you want to see how it can help you find version mismatches, go to your web.config for an MVC4 app 
+and redirect v4 to v3 for System.Web.MVC and you should receive an error.
 Run:
 </pre>
 <div class="nuget-badge">
@@ -19,8 +24,7 @@ Run:
 Since the assembly loads OK it's not an assembly load error and you have to look a little deeper.
 This script is available at <a href="http://www.paraesthesia.com/archive/2004/10/20/fusion-log-viewer-settings-changer.aspx">Fusion Log Viewer</a>
 
-To stop the logging (ensure you are out of the folder c:\fusionlogs or it can't delete it)
-</pre>
+To stop the logging (ensure you are out of the folder c:\fusionlogs or it can't delete it) and then run iisreset (for full IIS) or restart iis express</pre>
 
 <div class="nuget-badge">
     <p>
@@ -29,9 +33,38 @@ To stop the logging (ensure you are out of the folder c:\fusionlogs or it can't 
     </p>
 </div>
 <pre>
-So in summary, to test this out add the following into your web.config
+So in summary, to test out how this can help in failures, add the following into your application's root web.config (not the one in the /Views folder).
+Load up an MVC View and it should fail, then check the c:\fusionlogs folder and you'll see the loading for the 3.0 version which should stand out.
+The error message will be:
+    Expression of type 'System.Web.Mvc.MvcWebRazorHostFactory' cannot be used for return type 'System.Web.WebPages.Razor.WebRazorHostFactory'
+So - can't assign one type to another that should be assignable, a sign of version conflicts.
+If you search the fusion logs folder for "System.Web.Mvc" you'll quickly see:
+    System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+A-HA. A version 3 lib in a version 4 project. Solved.
+    
+    
+Note that if you break _this_ project to demo it, you'll need to comment out:
+    routes.MapAttributeRoutes(); as this will cause a problem first when you change the web.config as below.
+</pre>
+<pre id="plain" class='brush: xml'>
+
 &lt;dependentAssembly&gt;
     &lt;assemblyIdentity name=&quot;System.Web.Mvc&quot; publicKeyToken=&quot;31bf3856ad364e35&quot; /&gt;
 &lt;bindingRedirect oldVersion=&quot;1.0.0.0-4.0.0.0&quot; newVersion=&quot;<strong>3</strong>.0.0.0&quot; /&gt;
 &lt;/dependentAssembly&gt;
 </pre>
+
+
+@section scripts{
+    <script src="/Scripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="~/Scripts/SyntaxHighlighter/shBrushCSharp.js"></script>
+    <script src="~/Scripts/SyntaxHighlighter/shBrushXml.js"></script>
+    <link href="/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <link href="/Content/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SyntaxHighlighter.all();
+        });
+    </script>
+}
+

@@ -9,7 +9,18 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:GridView ID="statesList" runat="server" ItemType="_30TipsAndTricks.WebForms.Models.State"></asp:GridView>
+        <asp:GridView ID="statesList" AutoGenerateColumns="False" runat="server" UpdateMethod="SaveState" SelectMethod="LoadStates" ItemType="_30TipsAndTricks.WebForms.Models.State">
+            <Columns>
+            <asp:BoundField DataField="Abbreviation" HeaderText="ID" />
+            <asp:BoundField DataField="Name" HeaderText="Name"/>
+            <%--<asp:TemplateField HeaderText="State Name">
+                <ItemTemplate>
+                    <asp:Label ID="name" runat="server" Text='<%#: Item.Name%>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>--%>
+            <asp:CommandField ShowEditButton="True"></asp:CommandField>
+        </Columns>
+        </asp:GridView>
     </div>
     </form>
 </body>

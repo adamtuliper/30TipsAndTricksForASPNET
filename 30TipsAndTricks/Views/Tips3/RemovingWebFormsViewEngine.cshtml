@@ -1,17 +1,27 @@
 ﻿@model dynamic
 
-@{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
-}
-
-<h2>title</h2>
+<h2>Removing the Web Forms View Engine from MVC</h2>
 <pre>
-TODO format code
-var webFormsViewEngine = ViewEngines.Engines.OfType<WebFormViewEngine>().FirstOrDefault();
+Every request into MVC thast finds a view actually searches the file system first for ?.ascx, ?.aspx
+One method is to clear all engines and add just the Razor engine back, another technique is to simply 
+remove just the Web Forms view engine as follows in Application_Start</pre>
+
+<pre id="plain" class='brush: csharp'> 
+var webFormsViewEngine = ViewEngines.Engines.OfType&lt;WebFormViewEngine&gt;().FirstOrDefault();
 if (webFormsViewEngine != null)
 {
     ViewEngines.Engines.Remove(webFormsViewEngine);
 }
-                
 </pre>
+    
+@section scripts{
+    <script src="/Scripts/SyntaxHighlighter/shCore.js"></script>
+    <script src="/Scripts/SyntaxHighlighter/shBrushCSharp.js"></script>
+    <link href="/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
+    <link href="/Content/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            SyntaxHighlighter.all();
+        });
+    </script>
+}

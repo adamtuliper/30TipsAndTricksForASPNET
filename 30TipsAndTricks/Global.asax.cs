@@ -67,6 +67,8 @@ namespace _30TipsAndTricks
             {
                 ViewEngines.Engines.Remove(webFormsViewEngine);
             }
+
+            MiniProfilerEF.Initialize();
         }
     }
 }

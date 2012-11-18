@@ -13,46 +13,50 @@ By default optimization will use the min.js version when debug=false, and use th
 when debug=true, since typically that makes debugging easier (no bundling and no minification of the bundle).
     </pre>
 <div>
-    <div style="float: left">
-        Plain
+    <div>
+        Plain - Length: <div id="plainLength" style="display: inline-block;"></div>
         <pre id="plain" class='brush: css'>
 
         </pre>
     </div>
 
-    <div style="float: left;">
-        Minimized   
+    <div>
+        Bundled/Minimized   <div id="minimizedLength" style="display: inline-block;"> </div> 
         <pre id="minified" style="height: 500px; width: 200px; word-wrap: break-word;" class='brush: css'>
         </pre>
     </div>
 
 </div>
-
 <pre>
 <a href="http://www.asp.net/mvc/tutorials/mvc-4/bundling-and-minification">For more details</a>
 <a href="http://www.browserscope.org/?category=network">Six connections per hostname.</a>
 Upgraded from a prior version and you want bundling? 
 Check out <a href="http://stackoverflow.com/questions/12086518/adding-the-new-asp-net-web-optimization-framework-to-mvc4-projects-after-manuall">this stack overflow post</a>
 </pre>
-
 @section scripts{
-    <script src="/Scripts/SyntaxHighlighter/shCore.js"></script>
-    <script src="/Scripts/SyntaxHighlighter/shBrushCss.js"></script>
+    <script src="/Scripts/SyntaxHighlighter/shCore.js"> </script>
+    <script src="/Scripts/SyntaxHighlighter/shBrushCss.js"> </script>
     <link href="/Content/SyntaxHighlighter/shCore.css" rel="stylesheet" />
     <link href="/Content/SyntaxHighlighter/shCoreDefault.css" rel="stylesheet" />
     <script type="text/javascript">
-        $(document).ready(function () {
-            $.get('@Styles.Url("~/Content/bundlingtest")', function (data) {
+        $(document).ready(function() {
+            $.get('@Styles.Url("~/Content/bundlingtest")', function(data) {
                 $('#minified').text(data + '\n\n\na'); //force longer block
-                $.get('@Styles.Url("~/Content/MinificationAndBundling/1.css")', function (data) {
+                var minifiedLength = data.length;
+                $.get('@Styles.Url("~/Content/MinificationAndBundling/1.css")', function(data) {
                     $('#plain').text(data);
-                    $.get('@Styles.Url("~/Content/MinificationAndBundling/2.css")', function (data) {
-                        $('#plain').append(data);
-                        SyntaxHighlighter.highlight();
+                    $.get('@Styles.Url("~/Content/MinificationAndBundling/2.css")', function(data2) {
+                        $('#plain').append(data2);
+                        $.get('@Styles.Url("~/Content/MinificationAndBundling/3.css")', function(data3) {
+                            $('#plain').append(data3);
+                            var plainLength = data.length + data2.length + data3.length;
+                            SyntaxHighlighter.highlight();
+                            $("#minimizedLength").text(minifiedLength);
+                            $("#plainLength").text(plainLength);
+                        });
                     });
                 });
             });
         });
     </script>
 }
-

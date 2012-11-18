@@ -19,10 +19,6 @@ namespace _30TipsAndTricks.Controllers
             return View();
         }
 
-        public ActionResult WhySessionsAreBad()
-        {
-            return View();
-        }
 
         public ViewResult HiddenFieldSwitcher()
         {

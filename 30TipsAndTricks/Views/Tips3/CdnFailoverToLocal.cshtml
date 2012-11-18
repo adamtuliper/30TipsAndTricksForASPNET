@@ -5,10 +5,10 @@
 }
 
 <h2>CDN Failover</h2>
-Web Forms:
 
-MVC:
+<h3>Web Forms</h3>
 <pre id="plain" class='brush: xml'>
+    
 
 &lt;form id=&quot;frmMain&quot; runat=&quot;server&quot;&gt;
         &lt;asp:ScriptManager ID=&quot;smManager&quot; runat=&quot;server&quot;&gt;
@@ -34,6 +34,8 @@ MVC:
     ); // Load jQuery
     </pre>
     
+<h3>MVC</h3>
+
 In our MVC applications we can use a technique taken from HTML5 Boilerplate. We escape because if we don't it fails validation (validator.w3.org)
 This page intentionally fails the call to jQuery on the google cdn.
 @*<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
@@ -41,7 +43,7 @@ This page intentionally fails the call to jQuery on the google cdn.
 <pre id="plain" class='brush: xml'>
 
 &lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;!window.jQuery &amp;&amp; document.write(unescape(&#39;%3Cscript src=&quot;js/libs/jquery-1.7.1.js&quot;%3E%3C/script%3E&#39;))&lt;/script&gt;
+&lt;script&gt;!window.jQuery1 &amp;&amp; document.write(unescape(&#39;%3Cscript src=&quot;js/libs/jquery-1.7.1.js&quot;%3E%3C/script%3E&#39;))&lt;/script&gt;
    
 </pre>
 
@@ -60,8 +62,8 @@ yepnope([{
 
 
 @section scripts{
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12121127.1/jquery.js"></script>
-    <script>!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.7.1.js"%3E%3C/script%3E'))</script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12121127.1/jqueryFORCEFAIL.js"></script>
+    <script>!window.jQueryFakeVarToFail && document.write(unescape('%3Cscript src="js/libs/jquery-FAILOVERTEST1.7.1.js"%3E%3C/script%3E'))</script>
 
     <script src="/Scripts/SyntaxHighlighter/shCore.js"></script>
     <script src="/Scripts/SyntaxHighlighter/shBrushCSharp.js"></script>

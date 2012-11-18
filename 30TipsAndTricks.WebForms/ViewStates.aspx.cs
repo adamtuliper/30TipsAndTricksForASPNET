@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using _30TipsAndTricks.WebForms.Interfaces;
+using _30TipsAndTricks.WebForms.Models;
 using _30TipsAndTricks.WebForms.Repositories;
 
 namespace _30TipsAndTricks.WebForms
@@ -19,8 +20,19 @@ namespace _30TipsAndTricks.WebForms
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            statesList.DataSource = Repository.GetAll();
-            statesList.DataBind();
+            //statesList.DataSource = Repository.GetAll();
+            //statesList.DataBind();
+        }
+
+        public void SaveState(State state)
+        {
+            //Save the state
+            Trace.Write(state.Name);
+
+        }
+        public IEnumerable<State> LoadStates()
+        {
+            return Repository.GetAll();
         }
     }
 }

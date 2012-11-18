@@ -74,12 +74,18 @@
     <Reference Include="Glimpse.Core">
       <HintPath>..\packages\Glimpse.0.87\lib\net40\Glimpse.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Glimpse.Ef">
+      <HintPath>..\packages\Glimpse.Ef.0.87\lib\net40\Glimpse.Ef.dll</HintPath>
+    </Reference>
     <Reference Include="Glimpse.Mvc3">
       <HintPath>..\packages\Glimpse.Mvc3.0.87\lib\net40\Glimpse.Mvc3.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MiniProfiler">
       <HintPath>..\packages\MiniProfiler.2.0.2\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler.EntityFramework">
+      <HintPath>..\packages\MiniProfiler.EF.2.0.3\lib\net40\MiniProfiler.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -214,6 +220,9 @@
     <Compile Include="Controllers\Tips1Controller.cs" />
     <Compile Include="Controllers\Tips2Controller.cs" />
     <Compile Include="Controllers\Tips3Controller.cs" />
+    <Compile Include="Controllers\Tips4Controller.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="EFContext.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -234,11 +243,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database1.mdf" />
+    <Content Include="App_Data\Database1_log.ldf">
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Readme\glimpse.ef.readme.txt" />
     <Content Include="App_Readme\glimpse.mvc3.readme.txt" />
     <Content Include="App_Readme\glimpse.readme.txt" />
     <Content Include="Content\MinificationAndBundling\1.css" />
     <Content Include="Content\MinificationAndBundling\2.css" />
     <Content Include="Content\MinificationAndBundling\3.css" />
+    <Content Include="Content\MinificationAndBundling\Large.css" />
     <Content Include="Content\SyntaxHighlighter\shCore.css" />
     <Content Include="Content\SyntaxHighlighter\shCoreDefault.css" />
     <Content Include="Content\SyntaxHighlighter\shCoreDjango.css" />
@@ -314,6 +329,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\orderedList10.png" />
     <Content Include="Images\orderedList9.png" />
+    <Content Include="Images\IIS8 Application Initialization.png" />
     <Content Include="WebForm1.aspx" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
@@ -411,7 +427,7 @@
     <Content Include="Views\Tips2\Intellitrace.cshtml" />
     <Content Include="Views\Tips2\Index.cshtml" />
     <Content Include="Views\Tips3\Index.cshtml" />
-    <Content Include="Views\Tips3\WhySessionsAreBad.cshtml" />
+    <Content Include="Views\Tips2\WhySessionsAreBad.cshtml" />
     <Content Include="Views\Tips3\FormsAuthTimeouts.cshtml" />
     <Content Include="Views\Tips3\MoreComplexAction.cshtml" />
     <Content Include="Views\States\Index.cshtml" />
@@ -423,10 +439,11 @@
     <Content Include="Views\Tips3\AttributeRoutingSample.cshtml" />
     <Content Include="Views\Tips3\RemovingWebFormsViewEngine.cshtml" />
     <Content Include="Views\Tips3\CdnFailoverToLocal.cshtml" />
+    <Content Include="Views\Tips2\UsingAntiXss.cshtml" />
+    <Content Include="Views\Tips4\Index.cshtml" />
+    <Content Include="Views\Tips2\MiniProfiler.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
